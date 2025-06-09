@@ -6,6 +6,7 @@ import 'dotenv/config';
 import { bootstrap } from '@configs/helper';
 import { session } from '@configs/session';
 import { corseOptions, applySecurity } from '@configs/security';
+import appRoutes from './apps';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,11 @@ app.use(passport.session());
 app.get('/', (req, res) => {
   res.send('Hello from TypeScript Express!');
 });
+
+/**
+ * App routes
+ */
+app.use('/api', appRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
