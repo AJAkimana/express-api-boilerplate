@@ -15,7 +15,7 @@ export const loginUser = (req: Request, res: Response, next: NextFunction) => {
       const token = jwt.sign(user, process.env.APP_SECRET!, {
         expiresIn: Time.week,
       });
-      return serverResponse(res, 200, 'Success', token);
+      return serverResponse(res, 200, 'Success', { ...user, token });
     },
   )(req, res, next);
 };

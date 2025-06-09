@@ -1,4 +1,4 @@
-declare module CFG {
+declare namespace CFG {
   interface ICompany extends IBase {
     name: string;
     email: string;

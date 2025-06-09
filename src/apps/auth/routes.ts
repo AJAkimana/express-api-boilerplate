@@ -5,6 +5,6 @@ import { isAuthenticated } from './middlewares';
 const authRoutes = Router();
 
 authRoutes.post('/login', loginUser);
-authRoutes.get('/protected', isAuthenticated, getUserInfo);
+authRoutes.get('/info', isAuthenticated, getUserInfo);
 
 export default authRoutes;

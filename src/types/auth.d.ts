@@ -1,4 +1,4 @@
-declare module AUTH {
+declare namespace AUTH {
   interface IUser extends IBase {
     firstName: string;
     lastName: string;
