@@ -13,8 +13,10 @@ export class Company extends BaseModel<CFG.ICompany> implements CFG.ICompany {
 Company.init(
   {
     id: {
-      type: DataTypes.UUIDV4,
+      type: DataTypes.UUID,
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      unique: true,
     },
     name: {
       type: DataTypes.STRING,

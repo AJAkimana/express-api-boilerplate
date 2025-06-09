@@ -11,8 +11,10 @@ export class Role extends BaseModel<AUTH.IRole> implements AUTH.IRole {
 Role.init(
   {
     id: {
-      type: DataTypes.UUIDV4,
+      type: DataTypes.UUID,
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      unique: true,
     },
     name: {
       type: DataTypes.STRING,

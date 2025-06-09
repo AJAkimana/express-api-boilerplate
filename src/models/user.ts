@@ -14,8 +14,10 @@ export class User extends BaseModel<AUTH.IUser> implements AUTH.IUser {
 User.init(
   {
     id: {
-      type: DataTypes.UUIDV4,
+      type: DataTypes.UUID,
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      unique: true,
     },
     firstName: {
       type: DataTypes.STRING,
