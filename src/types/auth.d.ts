@@ -3,6 +3,13 @@ declare module AUTH {
     firstName: string;
     lastName: string;
     email: string;
+    password: string;
+    isActive: boolean;
     phoneNumber: string;
+  }
+
+  interface IRole extends IBase {
+    name: string;
+    companyId: string;
   }
 }
