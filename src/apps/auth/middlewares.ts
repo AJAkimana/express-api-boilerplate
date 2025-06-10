@@ -11,11 +11,10 @@ export const isAuthenticated = (
     'jwt',
     { session: false },
     (error: any, user: AUTH.IUser, info: any) => {
-      console.log({ error, user, info });
-
       if (error) return serverResponse(res, 500, 'Service not available');
       if (!user) return serverResponse(res, 401, 'Unauthorized');
 
+      delete (user as Partial<AUTH.IUser>).password;
       req.user = user;
       return next();
     },

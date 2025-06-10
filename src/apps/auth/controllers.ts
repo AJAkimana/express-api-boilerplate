@@ -12,10 +12,11 @@ export const loginUser = (req: Request, res: Response, next: NextFunction) => {
       if (err || !user) return serverResponse(res, 400, 'Login failed');
 
       // Issue JWT
+      delete (user as Partial<AUTH.IUser>).password;
       const token = jwt.sign(user, process.env.APP_SECRET!, {
         expiresIn: Time.week,
       });
-      return serverResponse(res, 200, 'Success', { ...user, token });
+      return serverResponse(res, 200, 'Success', { user, token });
     },
   )(req, res, next);
 };

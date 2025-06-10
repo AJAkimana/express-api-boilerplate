@@ -27,7 +27,10 @@ const localLoginStrategy = new LocalStrategy(
   (req, email, password, done) => {
     email = req.body.email.toLowerCase().trim();
     password = req.body.password;
-    User.findOne({ where: { email }, logging: false })
+    User.findOne({
+      where: { email },
+      logging: false,
+    })
       .then((user) => {
         if (!user) return done({ message: 'Invalid email' });
         if (!unHashPassword(password, user.password))
@@ -37,7 +40,7 @@ const localLoginStrategy = new LocalStrategy(
           msg += "Please contact the Administrator. He'll let you in";
           return done({ message: msg });
         }
-        // user = user.toJSON() as AUTH.IUser;
+        user = user.toJSON() as User;
         return done(null, user);
       })
       .catch((error) => done(error));
