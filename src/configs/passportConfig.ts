@@ -56,7 +56,6 @@ const jwtLoginStrategy = new JwtStrategy(
   },
 );
 
-// export const configurePassport = () => {
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -68,5 +67,5 @@ passport.deserializeUser((id: string, done) => {
 
 passport.use('local', localLoginStrategy);
 passport.use(jwtLoginStrategy);
-// };
+
 export default passport;
