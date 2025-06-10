@@ -8,3 +8,15 @@ export const hashPassword = (password: string) => {
 export const unHashPassword = (password: string, hashedPass: string) => {
   return bcrypt.compareSync(password, hashedPass);
 };
+
+export const compareTwoObjects = (current: any, newObj: any) => {
+  let newObject = {};
+  let hasDifferent = false;
+  Object.keys(current).forEach((key) => {
+    if (newObj[key] !== undefined && current[key] !== newObj[key]) {
+      hasDifferent = true;
+      newObject = { ...newObject, [key]: newObj[key] };
+    }
+  });
+  return { hasDifferent, newObject };
+};

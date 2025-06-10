@@ -7,6 +7,7 @@ import { bootstrap } from '@configs/helper';
 import { session } from '@configs/session';
 import { corseOptions, applySecurity } from '@configs/security';
 import appRoutes from './apps';
+import { errorHandler } from './apps/app/middlewares';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -40,6 +41,11 @@ app.get('/', (req, res) => {
  * App routes
  */
 app.use('/api', appRoutes);
+
+/**
+ * Error handling middleware
+ */
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

@@ -24,3 +24,18 @@ export const validateReq =
 
     serverResponse(res, 400, 'Validation error');
   };
+
+export const errorHandler = (
+  err: Error,
+  _req: Request,
+  res: Response,
+  _next: NextFunction,
+) => {
+  if (process.env.NODE_ENV === 'develop') {
+    console.log('Internal Server error', err.stack);
+  }
+  const message = err.message || 'Something went wrong';
+  const statusCode = res.statusCode ? res.statusCode : 500;
+
+  serverResponse(res, statusCode, message);
+};
