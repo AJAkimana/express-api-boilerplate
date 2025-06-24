@@ -1,6 +1,6 @@
 import express from 'express';
 import compression from 'compression';
-import passport from '@configs/passportConfig';
+import passport from '@configs/passport-config';
 import cors from 'cors';
 import 'dotenv/config';
 import { bootstrap } from '@configs/helper';

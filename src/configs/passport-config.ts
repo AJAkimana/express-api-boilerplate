@@ -10,7 +10,7 @@ import {
   ExtractJwt,
   StrategyOptionsWithoutRequest,
 } from 'passport-jwt';
-import { fetchOne } from '@db/queryHelper';
+import { fetchOne } from '@db/db-helper';
 
 const localStrategyOptions: IStrategyOptionsWithRequest = {
   usernameField: 'email',

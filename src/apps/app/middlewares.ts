@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { validationRules } from './validationRules';
+import { validationRules } from './validation-rules';
 import { validationResult } from 'express-validator';
 import { serverResponse } from '@libs/server';
 
