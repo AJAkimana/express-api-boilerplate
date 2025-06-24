@@ -12,4 +12,8 @@ declare namespace AUTH {
     name: string;
     companyId: string;
   }
+
+  interface IPassportError {
+    message?: string;
+  }
 }
