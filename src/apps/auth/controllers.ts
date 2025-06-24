@@ -8,11 +8,11 @@ export const loginUser = (req: Request, res: Response, next: NextFunction) => {
   passport.authenticate(
     'local',
     { session: false },
-    (err: any, user: AUTH.IUser, info: any) => {
-      if (err || !user) return serverResponse(res, 400, 'Login failed');
+    (err: AUTH.IPassportError, user: AUTH.IUser, info: any) => {
+      const msg = err?.message || info?.message || 'Login failed';
+      if (err || !user) return serverResponse(res, 400, msg);
 
       // Issue JWT
-      delete (user as Partial<AUTH.IUser>).password;
       const token = jwt.sign(user, process.env.APP_SECRET!, {
         expiresIn: Time.week,
       });
