@@ -14,6 +14,7 @@ enum ErrorType {
 
 export class BaseError extends Error {
   public statusCode?: number;
+  public error?: any;
 
   constructor() {
     super();
@@ -70,7 +71,7 @@ class InternalServerError extends BaseError {
     this.type = ErrorType.InternalError;
     this.statusCode = 500;
     this.message = message;
-    error;
+    this.error = error;
   }
 }
 class UnauthorizedError extends BaseError {
@@ -98,6 +99,20 @@ class ForbiddenAccessError extends BaseError {
   }
 }
 
+class DatabaseServiceError extends BaseError {
+  public type: ErrorType;
+
+  public message: string;
+
+  constructor(message: string = 'Database service error', error?: any) {
+    super();
+    this.type = ErrorType.DatabaseServiceError;
+    this.statusCode = 500;
+    this.message = message;
+    this.error = error;
+  }
+}
+
 export const forbiddenAccessError = (message?: string) =>
   new ForbiddenAccessError(message);
 export const unauthorizedError = (message?: string) =>
@@ -109,3 +124,5 @@ export const invalidDataError = (message?: string) =>
   new InvalidDataError(message);
 export const duplicateDataError = (message?: string) =>
   new DuplicateDataError(message);
+export const databaseServiceError = (message?: string, error?: any) =>
+  new DatabaseServiceError(message, error);
