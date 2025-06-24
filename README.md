@@ -6,15 +6,15 @@ This project is a boilerplate for building Node.js REST APIs using **Express**, 
 
 ## Features
 
-- **TypeScript** for type safety and maintainability  
-- **Express** for routing and middleware  
-- **Sequelize** ORM for PostgreSQL  
-- **Passport** for authentication (JWT & Local strategies)  
-- **Express-session** for session management  
-- **Validation** using `express-validator`  
-- **Security** via `helmet` and CORS configuration  
-- **Environment-based configuration**  
-- **Pre-configured ESLint and Prettier** for code style enforcement  
+- **TypeScript** for type safety and maintainability
+- **Express** for routing and middleware
+- **Sequelize** ORM for PostgreSQL
+- **Passport** for authentication (JWT & Local strategies)
+- **Express-session** for session management
+- **Validation** using `express-validator`
+- **Security** via `helmet` and CORS configuration
+- **Environment-based configuration**
+- **Pre-configured ESLint and Prettier** for code style enforcement
 
 ---
 
@@ -22,18 +22,23 @@ This project is a boilerplate for building Node.js REST APIs using **Express**, 
 
 ```
 src/
-  app.ts           # Main entry point
-  apps/            # Application modules (routes, controllers, services)
-    app/           # App-wide middlewares and validation
-    auth/          # Authentication logic (routes, controllers, middlewares)
-    users/         # User management logic
-  configs/         # Configuration files (DB, env, passport, session, security)
-  libs/            # Utility libraries (errors, server response, constants)
-  constants/       # Constant values (e.g., time)
-  models/          # Sequelize models (User, Company, Role, etc.)
+  app.ts             # Main entry point
+  apps/              # Application modules (routes, controllers, services)
+    app/             # App-wide middlewares and validation
+    auth/            # Authentication logic (routes, controllers, middlewares)
+    users/           # User management logic
+  configs/           # Configuration files (DB, env, passport, session, security)
+  libs/              # Utility libraries (errors, server response, constants)
+  constants/         # Constant values (e.g., time)
+  models/            # Sequelize models (User, Company, Role, etc.)
   services/
-    db/            # Database helper functions (CRUD)
-  types/           # TypeScript type definitions
+    db/              # Database helper functions (CRUD)
+  types/             # TypeScript type definitions
+.vscode/             # VS Code workspace settings
+.env                 # Environment variables
+.eslintrc.js         # ESLint configuration
+.prettierrc          # Prettier configuration
+package.json         # NPM scripts and dependencies
 ```
 
 ---
@@ -52,19 +57,23 @@ src/
 ## Getting Started
 
 1. **Install dependencies:**
+
    ```sh
    npm install
    ```
 
 2. **Configure environment:**
+
    - Copy `.env.example` to `.env` and fill in your values.
 
 3. **Run in development:**
+
    ```sh
    npm run dev
    ```
 
 4. **Build for production:**
+
    ```sh
    npm run build
    ```
