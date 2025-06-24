@@ -3,16 +3,16 @@ import compression from 'compression';
 import passport from '@configs/passport-config';
 import cors from 'cors';
 import 'dotenv/config';
-import { bootstrap } from '@configs/helper';
 import { session } from '@configs/session';
 import { corseOptions, applySecurity } from '@configs/security';
 import appRoutes from './apps';
 import { errorHandler } from './apps/app/middlewares';
+import { initializeDatabase } from '@configs/database';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-bootstrap();
+initializeDatabase();
 
 app.use(cors(corseOptions));
 applySecurity(app);
