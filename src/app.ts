@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 /**
  * App routes
  */
-app.use('/api', appRoutes);
+app.use('/api/v1', appRoutes);
 
 /**
  * Error handling middleware
