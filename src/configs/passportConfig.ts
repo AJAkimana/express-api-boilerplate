@@ -10,6 +10,7 @@ import {
   ExtractJwt,
   StrategyOptionsWithoutRequest,
 } from 'passport-jwt';
+import { fetchOne } from '@db/queryHelper';
 
 const localStrategyOptions: IStrategyOptionsWithRequest = {
   usernameField: 'email',
@@ -22,15 +23,15 @@ const jwtStrategyOption: StrategyOptionsWithoutRequest = {
   secretOrKey: process.env.APP_SECRET!,
 };
 
+const useFields = ['id', 'email', 'firstName', 'lastName', 'isActive'];
+
 const localLoginStrategy = new LocalStrategy(
   localStrategyOptions,
   (req, email, password, done) => {
     email = req.body.email.toLowerCase().trim();
     password = req.body.password;
-    User.findOne({
-      where: { email },
-      logging: false,
-    })
+
+    fetchOne(User, { email }, { attributes: useFields.concat('password') })
       .then((user) => {
         if (!user) return done({ message: 'Invalid email' });
         if (!unHashPassword(password, user.password))
@@ -41,6 +42,7 @@ const localLoginStrategy = new LocalStrategy(
           return done({ message: msg });
         }
         user = user.toJSON() as User;
+        delete (user as Partial<User>).password; // Remove password from user object
         return done(null, user);
       })
       .catch((error) => done(error));
@@ -50,7 +52,7 @@ const localLoginStrategy = new LocalStrategy(
 const jwtLoginStrategy = new JwtStrategy(
   jwtStrategyOption,
   (jwtPayload, done) => {
-    User.findByPk(jwtPayload.id)
+    fetchOne(User, { id: jwtPayload.id }, { attributes: useFields })
       .then((user) => done(null, user))
       .catch((error) => done(error));
   },
@@ -60,7 +62,7 @@ passport.serializeUser((user, done) => {
   done(null, user);
 });
 passport.deserializeUser((id: string, done) => {
-  User.findByPk(id)
+  fetchOne(User, { id }, { attributes: useFields })
     .then((user) => done(null, user))
     .catch((error) => done(error));
 });
