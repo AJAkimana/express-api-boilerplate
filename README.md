@@ -87,7 +87,7 @@ package.json         # NPM scripts and dependencies
 
 ## Useful Information
 
-- **Database**: Uses PostgreSQL by default. Configure credentials in `.env`.
+- **Database**: Uses any database that Sequelize supports. Just configure credentials in `.env`.
 - **Session**: Configured with `express-session`. Redis support is scaffolded but commented out.
 - **Authentication**: Passport supports both local (email/password) and JWT strategies.
 - **API Versioning**: All routes are prefixed with `/api/v1`.
