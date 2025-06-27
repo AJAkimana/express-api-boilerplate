@@ -1,5 +1,5 @@
 {
-  "name": "stockapi",
+  "name": "express-api-boilerplate",
   "version": "1.0.0",
   "description": "Stock management app",
   "main": "app.ts",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/AJAkimana/stock-api.git"
+    "url": "git+ssh://git@github.com/AJAkimana/express-api-boilerplate.git"
   },
   "keywords": [
     "stock",
@@ -28,9 +28,9 @@
   "author": "AJAkimana",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AJAkimana/stock-api/issues"
+    "url": "https://github.com/AJAkimana/express-api-boilerplate/issues"
   },
-  "homepage": "https://github.com/AJAkimana/stock-api#readme",
+  "homepage": "https://github.com/AJAkimana/express-api-boilerplate#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "compression": "^1.8.0",
